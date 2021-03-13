@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
     width: '600px',
 	  height: '120px',
 	  border: '3px solid #cccccc',
-	  padding: '5px'
+	  padding: '5px',
   },
   button: {
     marginTop: '40px'
