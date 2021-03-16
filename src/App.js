@@ -1,12 +1,22 @@
-import logo from './logo.svg'
-import {Typography, AppBar, TextareaAutosize, Button, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container} from '@material-ui/core';
+import React, {useState, useRef} from 'react';
+import {Typography, AppBar, TextField, Button, CssBaseline, Grid, Toolbar, Container} from '@material-ui/core';
 import BeenhereSharpIcon from '@material-ui/icons/BeenhereSharp';
 import useStyles from './styles';
 
 function App() {
 
+  const [txtValue, setTxtValue] = useState("")
+  const valueRef = useRef('')
   const classes = useStyles();
-  const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+  const sendValue = () => {
+    return console.log(valueRef.current.value) //on clicking button accesing current value of TextField and outputing it to console 
+  }
+
+  function findSpecialCharacters () {
+    const text = document.getElementsById("standard-multiline-static").defaultValue
+    console.log(text)
+  }
 
   return (
     <>
@@ -20,17 +30,19 @@ function App() {
       <main>
         <div className={classes.container}>
           <Container maxWidth="lg" justify="center" className={classes.containedText}>
-            <TextareaAutosize
+            <TextField
+              id="standard-multiline-static"
               className={classes.textArea}
-              aria-label="minimum height"
-              rowsMin={20}
-              placeholder="Enter ASA show running-configuration output"
+              label="ASA Show Running Config"
+              multiline
+              rows={4}
+              inputRef={valueRef}
             />
           </Container>
           <div className={classes.button}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
-                  <Button variant="contained" color="primary">
+                  <Button variant="contained" color="primary" onClick={sendValue}>
                     Submit
                   </Button>
                 </Grid>
