@@ -10,7 +10,17 @@ function App() {
   const classes = useStyles();
 
   const sendValue = () => {
-    return console.log(valueRef.current.value) //on clicking button accesing current value of TextField and outputing it to console 
+    var format = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*/g;
+    const matches = valueRef.current.value.match(format)
+
+    if (matches != null) {
+      alert ('Special characters detected \n' + matches)
+      console.log(matches)
+      return true;
+    } else {
+      alert ('Special characters not found')
+      return false;
+    }
   }
 
   function findSpecialCharacters () {
